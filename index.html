@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boxing Training Tracker</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>Boxing Training Tracker</h1>
+      <nav class="tabs">
+        <button class="tab active" data-target="trainer">Workout Trainer</button>
+        <button class="tab" data-target="analytics">Analytics</button>
+        <button class="tab" data-target="logs">System Logs</button>
+      </nav>
+    </header>
+
+    <main class="content">
+      <!-- ===== Workout Trainer ===== -->
+      <section id="trainer" class="section" style="display: block">
+        <div class="grid">
+          <div class="card">
+            <h2>Combination Trainer</h2>
+            <p class="muted">Generate a random punch combo to drill.</p>
+            <button id="btn-combo" class="primary">New Combination</button>
+            <div id="combo-display" class="readout">Press the button to start.</div>
+          </div>
+
+          <div class="card">
+            <h2>Round Clock</h2>
+            <p class="muted">A quick 5-second round countdown.</p>
+            <button id="btn-round" class="primary">Start Round</button>
+            <div id="round-display" class="readout big">5</div>
+          </div>
+
+          <div class="card wide">
+            <h2>Drill Plan</h2>
+            <p class="muted">
+              Add drills with an intensity level (higher = more critical).
+            </p>
+            <div class="row">
+              <input id="drill-name" type="text" placeholder="Drill name" />
+              <select id="drill-priority">
+                <option value="1">Level 1</option>
+                <option value="2">Level 2</option>
+                <option value="3">Level 3</option>
+                <option value="4">Level 4</option>
+              </select>
+              <button id="btn-add-drill" class="primary">Add Drill</button>
+            </div>
+            <ul id="drill-list" class="list"></ul>
+            <div class="row">
+              <button id="btn-pull-critical">Pull Most Critical</button>
+              <button id="btn-pull-optional">Pull Optional</button>
+            </div>
+            <div id="pull-display" class="readout"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== Analytics ===== -->
+      <section id="analytics" class="section" style="display: none">
+        <div class="grid">
+          <div class="card">
+            <h2>Stamina Estimator</h2>
+            <p class="muted">
+              Estimate effort for a number of rounds. Repeat values load instantly
+              from history.
+            </p>
+            <div class="row">
+              <input id="stamina-rounds" type="number" value="5" min="1" max="12" />
+              <button id="btn-stamina" class="primary">Estimate</button>
+            </div>
+            <div id="stamina-display" class="readout"></div>
+          </div>
+
+          <div class="card">
+            <h2>Intensity Screen</h2>
+            <p class="muted">Find high-intensity drills. You can stop it early.</p>
+            <div class="row">
+              <button id="btn-screen-drills" class="primary">Screen Drills</button>
+              <button id="btn-stop-screen">Stop</button>
+            </div>
+            <div id="screen-display" class="readout"></div>
+          </div>
+
+          <div class="card">
+            <h2>Cloud Sync</h2>
+            <p class="muted">Securely sync your workout data.</p>
+            <button id="btn-sync" class="primary">Sync Now</button>
+            <div id="sync-display" class="readout"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== System Logs ===== -->
+      <section id="logs" class="section" style="display: none">
+        <div class="grid">
+          <div class="card wide">
+            <h2>Import Workout Log</h2>
+            <p class="muted">
+              Load a session log line-by-line and tally the punches as it streams in.
+            </p>
+            <button id="btn-import-log" class="primary">Import Log</button>
+            <ul id="log-lines" class="list"></ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- App Activity Feed (fed by the logging decorator) -->
+    <footer class="feed-wrap">
+      <h3>App Activity Feed</h3>
+      <ul id="activity-feed" class="feed"></ul>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
